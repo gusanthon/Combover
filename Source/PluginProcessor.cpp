@@ -250,12 +250,9 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
             const float inSample = channelData[sample];
             
             float sum = 0;
-            
             int count = 0;
             
             for (int i = channel; i < currentNumCombs; i+=2)
-//            for (int i = 0; i < currentNumCombs; ++i)
-
             {
                 mDelays[i]->fdbackLPF.setCutoff(cutoffValues[i]);
                 
@@ -277,12 +274,10 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
                 
             }
             
-//            const float outSample = sum / currentNumCombs;
             const float outSample = sum / count;
             
             /** @TODO
                 - Figure out panning!
-                - Implement mParams, saturation
                 - Set default params
                 - Preset & state management
                 - Improve GUI

@@ -37,14 +37,10 @@ public:
     
     float process(Waveform waveform, float inRate, float inDepth);
 
-
-//    float* getBuffer();
-
 private:
 
     double mSampleRate;
 
     float mPhase;
     
-//    float modBuffer[maxDelayBufferSize];
 };
