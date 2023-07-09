@@ -10,7 +10,6 @@
 
 #pragma once
 
-#define maxDelayBufferSize 48000
 
 enum Waveform
 {

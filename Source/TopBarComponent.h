@@ -42,14 +42,14 @@ public:
     {
         g.fillAll(juce::Colour::fromRGB(35, 35, 45).darker().darker());
 
-        juce::Colour buttonColor = juce::Colour::fromRGB(255, 255, 255); // Button color
+        juce::Colour buttonColor = juce::Colour::fromRGB(255, 255, 255); 
         juce::Rectangle<int> randomizeButtonBounds = randomizeButton.getBounds();
         g.setColour(buttonColor);
         g.fillRoundedRectangle(randomizeButtonBounds.toFloat(), 5.0f);
 
-        g.setColour(juce::Colours::black); // Text color
-        g.setFont(Font("Futura", 14, juce::Font::plain)); // Adjust font size and style as desired
-
+        g.setColour(juce::Colours::black);
+        g.setFont(Font("Futura", 14, juce::Font::plain));
+        
         g.drawText(randomizeButton.getButtonText(), randomizeButtonBounds, juce::Justification::centred);
     }
 

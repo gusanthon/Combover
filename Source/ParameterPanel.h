@@ -26,8 +26,6 @@ public:
             addChildComponent(component);
             component->setLookAndFeel(&mLNF);
             
-//            std::cout << typeid(*component).name() << std::endl;
-
         }
     }
     
@@ -57,7 +55,6 @@ public:
 
     void resized() override
     {
-//        std::cout<<"Here!!!!!"<<std::endl;
         if (isHorizontal_)
             layoutHorizontal();
         else
@@ -66,7 +63,7 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        const float cornerSize = 10.0f; // Adjust the corner size as desired
+        const float cornerSize = 10.0f;
 
         
         g.setColour(backgroundColor_);

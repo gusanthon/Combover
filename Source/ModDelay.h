@@ -10,6 +10,7 @@
 
 #pragma once
 
+#define maxDelayBufferSize 48000
 #define SmoothingCoefficient_Fine 0.002
 
 

@@ -38,6 +38,5 @@ private:
     
     static const int topBarHeight = 40;
 
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ComboverAudioProcessorEditor)
 };

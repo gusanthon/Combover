@@ -34,6 +34,21 @@ public:
         }
 
         audioProcessor.apvts.addParameterListener("nCOMBS", this);
+        setNumCombs(audioProcessor.apvts.getRawParameterValue("nCOMBS")->load());
+    }
+    
+
+    
+private:
+    
+    void parameterChanged(const juce::String& parameterID, float newValue) override
+    {
+        if (parameterID == "nCOMBS")
+        {
+            int nCombs = audioProcessor.apvts.getRawParameterValue("nCOMBS")->load();
+            setNumCombs(nCombs);
+        }
+        
     }
     
     void setNumCombs(int newNCombs)
@@ -62,18 +77,6 @@ public:
         updateTabSizes();
     }
 
-    
-private:
-    
-    void parameterChanged(const juce::String& parameterID, float newValue) override
-    {
-        if (parameterID == "nCOMBS")
-        {
-            int nCombs = audioProcessor.apvts.getRawParameterValue("nCOMBS")->load();
-            setNumCombs(nCombs);
-        }
-        
-    }
     
     void resized() override
     {

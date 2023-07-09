@@ -16,7 +16,6 @@ ComboverAudioProcessorEditor::ComboverAudioProcessorEditor (ComboverAudioProcess
     topBar("COMBOVER", tabs, audioProcessor.apvts)
 {
     addAndMakeVisible(topBar);
-    tabs.setNumCombs(audioProcessor.apvts.getRawParameterValue("nCOMBS")->load());
     addAndMakeVisible(tabs);
     
     topBar.toFront(false);

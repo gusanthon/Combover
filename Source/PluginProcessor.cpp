@@ -24,7 +24,7 @@ ComboverAudioProcessor::ComboverAudioProcessor()
 {
     for (int i =0; i < maxNumCombs; i++) {
         mDelays[i] = std::make_unique<ModDelay>();
-        mDelays[i]->prepare(getSampleRate()); // figure out how to get blockSize here
+        mDelays[i]->prepare(getSampleRate());
         mLFOs[i] = std::make_unique<LFO>();
         mLFOs[i]->setSampleRate(getSampleRate());
     }
@@ -70,14 +70,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout ComboverAudioProcessor::crea
         juce::NormalisableRange<float> rateRange(0.0001f, 20.f, 0.f, 1.f, true);
         rateRange.setSkewForCentre(1.f);
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("RATE_") + std::to_string(combIndex), 1}, "RATE_" + std::to_string(combIndex), rateRange, .5f));
-
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("PAN_") + std::to_string(combIndex), 1}, "PAN_" + std::to_string(combIndex), -10, 10, 0.f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("SATURATION_") + std::to_string(combIndex), 1}, "SATURATION_" + std::to_string(combIndex), 0,100, 0.f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("MIX_") + std::to_string(combIndex), 1}, "MIX_" + std::to_string(combIndex), 0, 100, 100.f));
-        
+    
     }
     
     return params;
@@ -265,7 +264,6 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
                 float panLeft = (panValue <= 0.f) ? 1.f : 1.f - (panValue);
                 float panRight = (panValue >= 0.f) ? 1.f : 1.f + (panValue);
 
-                
                 currentSample *= (channel == 0) ? panLeft : panRight;
                 
                 sum += currentSample;
