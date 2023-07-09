@@ -31,7 +31,6 @@ public:
         OutPanel(juce::Array<juce::Component*>{&SaturationSlider, &PanSlider, &MixSlider}, true)
     {
         
-        
         delayAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "DELAY_" + std::to_string(combNum), DelaySlider.getSlider());
         feedbackAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "FEEDBACK_" + std::to_string(combNum), FeedbackSlider.getSlider());
         cutoffAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "CUTOFF_" + std::to_string(combNum), CutoffSlider.getSlider());

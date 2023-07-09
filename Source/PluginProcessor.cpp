@@ -230,7 +230,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         feedbackValues[numComb] = std::clamp((apvts.getRawParameterValue("FEEDBACK_" + std::to_string(combIndex))->load() / 100) * mFeedbackValue, -10.0f, 10.0f);
 
         float cutoff = apvts.getRawParameterValue("CUTOFF_" + std::to_string(combIndex))->load() * mDampingValue;
-        cutoffValues[numComb] = ((20.e3 + (minDampingFreq - 20.e3) * (cutoff / 100.0f)));// * mDampingValue);
+        cutoffValues[numComb] = ((20.e3 + (minDampingFreq - 20.e3) * (cutoff / 100.0f)));
         rateValues[numComb] = (apvts.getRawParameterValue("RATE_" + std::to_string(combIndex))->load() * mRateValue);
         depthValues[numComb] = (apvts.getRawParameterValue("DEPTH_" + std::to_string(combIndex))->load() / 100.f) * mDepthValue;
         saturationValues[numComb] = apvts.getRawParameterValue("SATURATION_" + std::to_string(combIndex))->load() / 100.f;

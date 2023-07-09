@@ -45,7 +45,7 @@ public:
         if (newCutoff != cutoff)
         {
             cutoff = newCutoff;
-            double Res = 1.f / (twopi * Cap * cutoff);
+            double Res = 1 / (twopi * Cap * cutoff);
             r1.setResistanceValue(Res);
         }
     }
