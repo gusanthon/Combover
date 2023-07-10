@@ -134,8 +134,6 @@ public:
       
 private:
     
-    friend class TopBarComponent;
-    
     SliderWithLabel DelaySlider;
     SliderWithLabel FeedbackSlider;
     SliderWithLabel CutoffSlider;

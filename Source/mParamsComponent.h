@@ -132,9 +132,7 @@ public:
 
     
 private:
-    
-    friend class topBarComponent;
-    
+        
     SliderWithLabel mDelaySlider;
     SliderWithLabel mFeedbackSlider;
     SliderWithLabel mCutoffSlider;

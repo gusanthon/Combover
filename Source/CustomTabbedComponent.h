@@ -53,7 +53,6 @@ private:
     
     void setNumCombs(int newNCombs)
     {
-        
         int nCombsToAdd = newNCombs - numCombs;
     
         if (nCombsToAdd > 0)

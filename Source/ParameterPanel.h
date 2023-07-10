@@ -65,7 +65,6 @@ public:
     {
         const float cornerSize = 10.0f;
 
-        
         g.setColour(backgroundColor_);
         g.fillRoundedRectangle(getLocalBounds().toFloat(), cornerSize);
 
