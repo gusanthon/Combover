@@ -71,7 +71,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout ComboverAudioProcessor::crea
         rateRange.setSkewForCentre(1.f);
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("RATE_") + std::to_string(combIndex), 1}, "RATE_" + std::to_string(combIndex), rateRange, .5f));
         
-        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("PAN_") + std::to_string(combIndex), 1}, "PAN_" + std::to_string(combIndex), -10, 10, 0.f));
+        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("PAN_") + std::to_string(combIndex), 1}, "PAN_" + std::to_string(combIndex), -100, 100, 0.f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("SATURATION_") + std::to_string(combIndex), 1}, "SATURATION_" + std::to_string(combIndex), 0,100, 0.f));
         
@@ -273,14 +273,6 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
             }
             
             const float outSample = sum / count;
-            
-            /** @TODO
-                - Figure out panning!
-                - Set default params
-                - Preset & state management
-                - Improve GUI
-                - Make utilities.h w/ default params, to clamp values when mParam > 100%
-             **/
             
             channelData[sample] = outSample;
             
