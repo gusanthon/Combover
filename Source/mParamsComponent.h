@@ -80,15 +80,7 @@ public:
         addAndMakeVisible(mOutPanel);
     }
     
-//    void resized() override
-//    {
-//        mDelayPanel.setBounds(getLocalBounds());
-//        mLFOPanel.setBounds(getLocalBounds());
-//        mDelayPanel.resized();
-//    }
-    
-    
-    
+
     void resized() override
     {
 
