@@ -76,6 +76,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout ComboverAudioProcessor::crea
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("SATURATION_") + std::to_string(combIndex), 1}, "SATURATION_" + std::to_string(combIndex), 0,100, 0.f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("MIX_") + std::to_string(combIndex), 1}, "MIX_" + std::to_string(combIndex), 0, 100, 100.f));
+        
+        params.add(std::make_unique<AudioParameterChoice>(ParameterID{std::string("SHAPE_") + std::to_string(combIndex), 1}, "SHAPE_" + std::to_string(combIndex), juce::StringArray("Option 1", "Option 2", "Option 3", "Option 4", "Option 5"), 1));
     
     }
     

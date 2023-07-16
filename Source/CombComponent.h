@@ -26,8 +26,9 @@ public:
         PanSlider("PAN " + std::to_string(combNum)),
         MixSlider("LEVEL " + std::to_string(combNum)),
         SaturationSlider("SATURATION " + std::to_string(combNum)),
+        ShapeComboBox("SHAPE "+ std::to_string(combNum)),
         DelayPanel(juce::Array<juce::Component*>{&DelaySlider, &FeedbackSlider, &CutoffSlider}, true),
-        LFOPanel(juce::Array<juce::Component*>{&RateSlider, &DepthSlider}, true),
+        LFOPanel(juce::Array<juce::Component*>{&RateSlider, &DepthSlider, &ShapeComboBox}, true),
         OutPanel(juce::Array<juce::Component*>{&SaturationSlider, &PanSlider, &MixSlider}, true)
     {
         
@@ -41,6 +42,10 @@ public:
         rateAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "RATE_" + std::to_string(combNum), RateSlider.getSlider());
 
         saturationAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "SATURATION_" + std::to_string(combNum), SaturationSlider.getSlider());
+        
+        shapeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(proc.apvts, "SHAPE_" + std::to_string(combNum), ShapeComboBox.getComboBox());
+        
+        
         
 //        DelaySlider.getSlider().setValue(10 * combNum);
         
@@ -140,6 +145,7 @@ private:
     
     SliderWithLabel RateSlider;
     SliderWithLabel DepthSlider;
+    ComboBoxWithLabel ShapeComboBox;
     
     SliderWithLabel SaturationSlider;
     SliderWithLabel PanSlider;
@@ -156,7 +162,8 @@ private:
     
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> rateAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> depthAttachment;
-    
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> shapeAttachment;
+
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> panAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> levelAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> saturationAttachment;
