@@ -100,19 +100,19 @@ public:
         {
             auto* combContent = dynamic_cast<CombComponent*>(tabs_.getTabContentComponent(i));
 
-            std::vector<SliderWithLabel*> parameters = combContent->getParameters();
+            std::vector<SliderWithLabel*> sliders = combContent->getSliders();
 
-            for (auto* parameter : parameters)
+            for (auto* slider : sliders)
             {
-
-                float minVal = parameter->getSlider().getMinimum();
-                float maxVal = parameter->getSlider().getMaximum();
+                
+                float minVal = slider->getSlider().getMinimum();
+                float maxVal = slider->getSlider().getMaximum();
                 float range = maxVal - minVal;
                 
                 float randomFloat = juce::Random::getSystemRandom().nextFloat();
                 float randomVal = (range * randomFloat) + minVal;
                 
-                parameter->getSlider().setValue(randomVal);
+                slider->getSlider().setValue(randomVal);
 
             }
             combContent->randomizeShape();
