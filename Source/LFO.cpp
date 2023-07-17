@@ -56,6 +56,9 @@ float LFO::process(int waveform, float inRate, float inDepth)
         case Sawtooth:
             lfoPosition = 1.0f - mPhase * 2.0f;
             break;
+        case Random:
+            lfoPosition = juce::Random::getSystemRandom().nextFloat() * 2.0f - 1.0f;
+            break;
     }
 
     lfoPosition *= inDepth;

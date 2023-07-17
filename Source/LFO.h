@@ -16,7 +16,8 @@ enum Waveform
     Sine = 1,
     Triangle,
     Square,
-    Sawtooth
+    Sawtooth,
+    Random
 };
 
 
