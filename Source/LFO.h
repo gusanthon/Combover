@@ -13,7 +13,7 @@
 
 enum Waveform
 {
-    Sine,
+    Sine = 1,
     Triangle,
     Square,
     Sawtooth
@@ -31,10 +31,8 @@ public:
     void reset();
 
     void setSampleRate(double inSampleRate);
-
-    void process(Waveform waveform, float inRate, float inDepth, float inNumSamples);
     
-    float process(Waveform waveform, float inRate, float inDepth);
+    float process(int waveform, float inRate, float inDepth);
 
 private:
 
