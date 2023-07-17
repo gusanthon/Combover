@@ -44,7 +44,7 @@ void ModDelay::reset()
 }
 
 
-float ModDelay::processSample(float inSample, float inTime, float inFeedback, int waveShaperType, float inWetDry, float gain, float inModulation)
+float ModDelay::processSample(float inSample, float inTime, float inFeedback, float inWetDry, float gain, float inModulation)
 {
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
