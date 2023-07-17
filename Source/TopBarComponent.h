@@ -94,7 +94,7 @@ public:
             
         }
         
-        tabs_.setCurrentTabIndex(0);
+//        tabs_.setCurrentTabIndex(0);
         int numCombs = apvts_.getRawParameterValue("nCOMBS")->load();
         
         for (int i = 1; i < numCombs; ++i)
@@ -116,6 +116,7 @@ public:
                 parameter->getSlider().setValue(randomVal);
 
             }
+            combContent->randomizeShape();
         }
 
     }
