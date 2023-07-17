@@ -36,6 +36,7 @@ public:
         ShapeComboBox.addItem(juce::String("Triangle"), 2);
         ShapeComboBox.addItem(juce::String("Square"), 3);
         ShapeComboBox.addItem(juce::String("Sawtooth"), 4);
+        ShapeComboBox.addItem(juce::String("Random"), 5);
         ShapeComboBox.getComboBox().setSelectedId(1);
         
         delayAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "DELAY_" + std::to_string(combNum), DelaySlider.getSlider());
@@ -109,29 +110,28 @@ public:
         LFOPanel.setBounds(panelOffsetX, topBarHeight + padding, panelWidth, panelHeight);
         OutPanel.setBounds(getWidth() / 2 - panelWidth / 2, panelHeight + topBarHeight + padding * 2, panelWidth, panelHeight);
 
-
     }
     
-    std::vector<SliderWithLabel*> getParameters()
+    std::vector<SliderWithLabel*> getSliders()
     {
-        std::vector<SliderWithLabel*> parameters;
+        std::vector<SliderWithLabel*> sliders;
 
-        parameters.push_back(&DelaySlider);
-        parameters.push_back(&FeedbackSlider);
-        parameters.push_back(&CutoffSlider);
-        parameters.push_back(&RateSlider);
-        parameters.push_back(&DepthSlider);
-        parameters.push_back(&SaturationSlider);
-        parameters.push_back(&PanSlider);
-        parameters.push_back(&MixSlider);
+        sliders.push_back(&DelaySlider);
+        sliders.push_back(&FeedbackSlider);
+        sliders.push_back(&CutoffSlider);
+        sliders.push_back(&RateSlider);
+        sliders.push_back(&DepthSlider);
+        sliders.push_back(&SaturationSlider);
+        sliders.push_back(&PanSlider);
+        sliders.push_back(&MixSlider);
 
-        return parameters;
+        return sliders;
     }
     
     void randomizeShape()
     {
         float randomFloat = juce::Random::getSystemRandom().nextFloat();
-        int range = 4;
+        int range = 5;
         int randomChoice = randomFloat * range + 1;
         ShapeComboBox.getComboBox().setSelectedId(randomChoice);
     
