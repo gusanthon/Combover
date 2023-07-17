@@ -94,7 +94,6 @@ public:
             
         }
         
-//        tabs_.setCurrentTabIndex(0);
         int numCombs = apvts_.getRawParameterValue("nCOMBS")->load();
         
         for (int i = 1; i < numCombs; ++i)
