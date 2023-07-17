@@ -32,6 +32,12 @@ public:
         OutPanel(juce::Array<juce::Component*>{&SaturationSlider, &PanSlider, &MixSlider}, true)
     {
         
+        ShapeComboBox.addItem(juce::String("Sine"), 1);
+        ShapeComboBox.addItem(juce::String("Triangle"), 2);
+        ShapeComboBox.addItem(juce::String("Square"), 3);
+        ShapeComboBox.addItem(juce::String("Sawtooth"), 4);
+        ShapeComboBox.getComboBox().setSelectedId(1);
+        
         delayAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "DELAY_" + std::to_string(combNum), DelaySlider.getSlider());
         feedbackAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "FEEDBACK_" + std::to_string(combNum), FeedbackSlider.getSlider());
         cutoffAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "CUTOFF_" + std::to_string(combNum), CutoffSlider.getSlider());
@@ -44,10 +50,7 @@ public:
         saturationAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "SATURATION_" + std::to_string(combNum), SaturationSlider.getSlider());
         
         shapeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(proc.apvts, "SHAPE_" + std::to_string(combNum), ShapeComboBox.getComboBox());
-        
-        
-        
-//        DelaySlider.getSlider().setValue(10 * combNum);
+
         
         DelayPanel.setTitleText("DELAY "+ std::to_string(combNum));
         DelaySlider.setRange(.01f, 300.f, .01f);
@@ -68,7 +71,7 @@ public:
         RateSlider.setRange(0.01f, 20.f, .1f);
         RateSlider.setSuffix("Hz");
         RateSlider.setNumDecimalPlacesToDisplay(1);
-        
+              
         PanSlider.setRange(-100.f, 100.f, .1f);
         PanSlider.setNumDecimalPlacesToDisplay(1);
         MixSlider.setRange(0.f, 100.f, .1f);
@@ -81,19 +84,11 @@ public:
         LFOPanel.setBackgroundColor(juce::Colours::crimson);
         OutPanel.setBackgroundColor(juce::Colours::darkgreen);
 
-        
-//        addAndMakeVisible(&mDelaySlider);
         addAndMakeVisible(DelayPanel);
         addAndMakeVisible(LFOPanel);
         addAndMakeVisible(OutPanel);
     }
-    
-//    void resized() override
-//    {
-//        mDelayPanel.setBounds(getLocalBounds());
-//        mLFOPanel.setBounds(getLocalBounds());
-//        mDelayPanel.resized();
-//    }
+
     
     void resized() override
     {
@@ -109,8 +104,6 @@ public:
 
         DelayPanel.setBounds(padding, topBarHeight + padding, panelWidth, panelHeight);
         
-        // Add space between the panels
-//        const int panelSpacing = 40;
         const int panelOffsetX = panelWidth + 2 * panelSpacing;
 
         LFOPanel.setBounds(panelOffsetX, topBarHeight + padding, panelWidth, panelHeight);
@@ -134,6 +127,15 @@ public:
 
         return parameters;
     }
+    
+    void randomizeShape()
+    {
+        float randomFloat = juce::Random::getSystemRandom().nextFloat();
+        int range = 4;
+        int randomChoice = randomFloat * range + 1;
+        ShapeComboBox.getComboBox().setSelectedId(randomChoice);
+    
+    }
 
     
       
@@ -150,7 +152,6 @@ private:
     SliderWithLabel SaturationSlider;
     SliderWithLabel PanSlider;
     SliderWithLabel MixSlider;
-    
     
     ParameterPanel DelayPanel;
     ParameterPanel LFOPanel;
