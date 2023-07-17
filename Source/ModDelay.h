@@ -29,8 +29,6 @@ public:
 
     void reset();
 
-    void setWaveShaper(int choice);
-
     float processSample(float inSample, float inTime, float inFeedback, float inWetDry, float gain, float inModulation);
     
     RCLowpass fdbackLPF;
@@ -49,9 +47,8 @@ private:
 
     int mDelayIndex;
    
-    
     static inline float BBD_approx(float inputSample) {
-        return (inputSample - (pow(inputSample, 2) / 8.0f) - (pow(inputSample, 3) / 16.0f));// + 0.125f);
+        return (inputSample - (pow(inputSample, 2) / 8.0f) - (pow(inputSample, 3) / 16.0f));
     }
 
     
