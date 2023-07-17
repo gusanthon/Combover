@@ -215,6 +215,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     std::vector<float> saturationValues(currentNumCombs);
     std::vector<float> panValues(currentNumCombs);
     std::vector<float> levelValues(currentNumCombs);
+    std::vector<int> shapeChoiceValues(currentNumCombs);
 
     float mDelayValue = apvts.getRawParameterValue("mDELAY")->load() / 100.f;
     float mFeedbackValue = apvts.getRawParameterValue("mFEEDBACK")->load()/ 100.f;
@@ -238,6 +239,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         saturationValues[numComb] = apvts.getRawParameterValue("SATURATION_" + std::to_string(combIndex))->load() / 100.f;
         panValues[numComb] = (apvts.getRawParameterValue("PAN_" + std::to_string(combIndex))->load() / 100.f) * mWidthValue;
         levelValues[numComb] = (apvts.getRawParameterValue("MIX_" + std::to_string(combIndex))->load() / 100.f) * mMixValue;
+        shapeChoiceValues[numComb] = apvts.getRawParameterValue("SHAPE_" + std::to_string(combIndex))->load();
     }
 
     const float maxGain = 15 ; //db
@@ -257,9 +259,9 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
             {
                 mDelays[i]->fdbackLPF.setCutoff(cutoffValues[i]);
                 
-                const float modulationSample = mLFOs[i]->process(Waveform::Sine, rateValues[i], depthValues[i]);
+                const float modulationSample = mLFOs[i]->process(shapeChoiceValues[i], rateValues[i], depthValues[i]);
                 
-                float currentSample = mDelays[i]->processSample(inSample, delayValues[i], feedbackValues[i], 1, levelValues[i], juce::Decibels::decibelsToGain(saturationValues[i] * maxGain), modulationSample);
+                float currentSample = mDelays[i]->processSample(inSample, delayValues[i], feedbackValues[i], levelValues[i], juce::Decibels::decibelsToGain(saturationValues[i] * maxGain), modulationSample);
                 
                 const float panValue = panValues[i];
                 
