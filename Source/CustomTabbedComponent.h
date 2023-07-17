@@ -27,9 +27,8 @@ public:
 
         addTab("Master Params", backgroundColour, new mParamsComponent(audioProcessor), true);
 
-        for (int i = 0; i < numCombs; ++i)
+        for (int combIndex = 1; combIndex < numCombs + 1; ++combIndex)
         {
-            int combIndex = i + 1;
             addTab("Comb " + std::to_string(combIndex), backgroundColour, new CombComponent(audioProcessor, combIndex), true);
         }
 
@@ -56,13 +55,10 @@ private:
         int nCombsToAdd = newNCombs - numCombs;
         
         int newNumCombs = nCombsToAdd + numCombs;
-        
-        int currentTab = getCurrentTabIndex();
 
-        if (currentTab > newNumCombs)
+        if (getCurrentTabIndex() > newNumCombs)
             setCurrentTabIndex(newNumCombs);
     
-        
         if (nCombsToAdd > 0)
         {
             for (int i = 0; i < nCombsToAdd; ++i)
@@ -74,7 +70,7 @@ private:
         
         else
         {
-            for (int i = numCombs; i > numCombs + nCombsToAdd; i--)
+            for (int i = numCombs; i > newNumCombs; i--)
             {
                 removeTab(i);
             }
@@ -102,7 +98,6 @@ private:
     }
 
     int numCombs = 6;
-    static const int maxNumCombs = 12;
     ComboverAudioProcessor& audioProcessor;
     juce::Colour backgroundColour = juce::Colour::fromRGB(35, 35, 45);
 
