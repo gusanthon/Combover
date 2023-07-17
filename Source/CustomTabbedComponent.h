@@ -54,7 +54,15 @@ private:
     void setNumCombs(int newNCombs)
     {
         int nCombsToAdd = newNCombs - numCombs;
+        
+        int newNumCombs = nCombsToAdd + numCombs;
+        
+        int currentTab = getCurrentTabIndex();
+
+        if (currentTab > newNumCombs)
+            setCurrentTabIndex(newNumCombs);
     
+        
         if (nCombsToAdd > 0)
         {
             for (int i = 0; i < nCombsToAdd; ++i)
@@ -69,10 +77,11 @@ private:
             for (int i = numCombs; i > numCombs + nCombsToAdd; i--)
             {
                 removeTab(i);
-
             }
         }
-        numCombs += nCombsToAdd;
+        
+        numCombs = newNumCombs;
+        
         updateTabSizes();
     }
 
@@ -87,7 +96,6 @@ private:
     {
         const int numTabs = getNumTabs();
         const int tabBarWidth = getWidth();
-//        const int tabWidth = tabBarWidth / numTabs;
 
         setTabBarDepth(tabBarWidth * .05);
 
@@ -97,9 +105,7 @@ private:
     static const int maxNumCombs = 12;
     ComboverAudioProcessor& audioProcessor;
     juce::Colour backgroundColour = juce::Colour::fromRGB(35, 35, 45);
-//    juce::Colour backgroundColour = juce::Colours::silver;//.darker();
-//    juce::Colour backgroundColour = juce::Colours::
-//    juce::Colour backgroundColoour = juce::Colours::darkslategrey;
+
 };
 
 
