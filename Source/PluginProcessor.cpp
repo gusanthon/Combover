@@ -239,7 +239,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         saturationValues[numComb] = apvts.getRawParameterValue("SATURATION_" + std::to_string(combIndex))->load() / 100.f;
         panValues[numComb] = (apvts.getRawParameterValue("PAN_" + std::to_string(combIndex))->load() / 100.f) * mWidthValue;
         levelValues[numComb] = (apvts.getRawParameterValue("MIX_" + std::to_string(combIndex))->load() / 100.f) * mMixValue;
-        shapeChoiceValues[numComb] = apvts.getRawParameterValue("SHAPE_" + std::to_string(combIndex))->load();
+        shapeChoiceValues[numComb] = apvts.getRawParameterValue("SHAPE_" + std::to_string(combIndex))->load() + 1;
     }
 
     const float maxGain = 15 ; //db
@@ -257,6 +257,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
             
             for (int i = channel; i < currentNumCombs; i+=2)
             {
+                
                 mDelays[i]->fdbackLPF.setCutoff(cutoffValues[i]);
                 
                 const float modulationSample = mLFOs[i]->process(shapeChoiceValues[i], rateValues[i], depthValues[i]);
