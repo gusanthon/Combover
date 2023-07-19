@@ -131,7 +131,7 @@ public:
     void randomizeShape()
     {
         float randomFloat = juce::Random::getSystemRandom().nextFloat();
-        int range = 5;
+        int range = ShapeComboBox.getComboBox().getNumItems();
         int randomChoice = randomFloat * range + 1;
         ShapeComboBox.getComboBox().setSelectedId(randomChoice);
     
