@@ -61,9 +61,9 @@ private:
     
         if (nCombsToAdd > 0)
         {
-            for (int i = 0; i < nCombsToAdd; ++i)
+            for (int i = 1; i < nCombsToAdd + 1; ++i)
             {
-                int combNum = i + 1 + numCombs;
+                int combNum = i + numCombs;
                 addTab("Comb " + std::to_string(combNum), backgroundColour, new CombComponent(audioProcessor, combNum), true);
             }
         }
