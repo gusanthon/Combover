@@ -97,7 +97,6 @@ public:
         mDelayPanel.setBounds(padding, topBarHeight + padding, panelWidth, panelHeight);
         
         // Add space between the panels
-//        const int panelSpacing = 40;
         const int panelOffsetX = panelWidth + 2 * panelSpacing;
 
         mLFOPanel.setBounds(panelOffsetX, topBarHeight + padding, panelWidth, panelHeight);
@@ -106,7 +105,7 @@ public:
 
     }
     
-    std::vector<SliderWithLabel*> getParameters()
+    std::vector<SliderWithLabel*> getSlideres()
     {
         std::vector<SliderWithLabel*> parameters;
 
