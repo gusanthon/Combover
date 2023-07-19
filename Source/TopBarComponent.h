@@ -78,19 +78,19 @@ public:
         
         auto* mParamsContent = dynamic_cast<mParamsComponent*>(tabs_.getTabContentComponent(0));
         
-        std::vector<SliderWithLabel*> mParams = mParamsContent->getParameters();
+        std::vector<SliderWithLabel*> mSliders = mParamsContent->getSlideres();
         
-        for (SliderWithLabel* parameter : mParams)
+        for (SliderWithLabel* slider : mSliders)
         {
 
-            float minVal = parameter->getSlider().getMinimum();
-            float maxVal = parameter->getSlider().getMaximum();
+            float minVal = slider->getSlider().getMinimum();
+            float maxVal = slider->getSlider().getMaximum();
             float range = maxVal - minVal;
             
             float randomFloat = juce::Random::getSystemRandom().nextFloat();
             float randomVal = (range * randomFloat) + minVal;
             
-            parameter->getSlider().setValue(randomVal);
+            slider->getSlider().setValue(randomVal);
             
         }
         
