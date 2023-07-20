@@ -33,12 +33,12 @@ public:
         auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
         // Draw path of the slider background (in darker background colour)
-        Path backgroundArc;
-        backgroundArc.addCentredArc(centreX, centreY, radius, radius, 0.0f, rotaryStartAngle, rotaryEndAngle, true);
-        Colour myColour = findColour(0x1005700);
-        myColour = myColour.darker(.8f);
-        g.setColour(myColour);
-        g.strokePath(backgroundArc, PathStrokeType(radius * 0.1f, PathStrokeType::curved, PathStrokeType::rounded));
+//        Path backgroundArc;
+//        backgroundArc.addCentredArc(centreX, centreY, radius, radius, 0.0f, rotaryStartAngle, rotaryEndAngle, true);
+//        Colour myColour = findColour(0x1005700);
+//        myColour = myColour.darker(.8f);
+//        g.setColour(myColour);
+//        g.strokePath(backgroundArc, PathStrokeType(radius * 0.1f, PathStrokeType::curved, PathStrokeType::rounded));
 
         // Draw path of slider foreground (in white)
         Path foregroundArc;
