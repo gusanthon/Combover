@@ -65,7 +65,7 @@ public:
         mMixSlider.setRange(0.f, 100.f, .1f);
         mMixSlider.setSuffix("%");
         mMixSlider.setNumDecimalPlacesToDisplay(1);
-        nCombsSlider.setRange(2, 12, 2);
+        nCombsSlider.setRange(2, 12, 1);
         nCombsSlider.setNumDecimalPlacesToDisplay(0);
         
         mOutPanel.setTitleText("mOUT");
