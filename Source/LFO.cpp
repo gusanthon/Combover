@@ -31,7 +31,7 @@ void LFO::setSampleRate(double inSampleRate)
     mSampleRate = inSampleRate;
 }
 
-float LFO::process(int waveform, float inRate, float inDepth)
+float LFO::process(Waveform waveform, float inRate, float inDepth)
 {
     mPhase = mPhase + (inRate / mSampleRate);
 
@@ -42,7 +42,7 @@ float LFO::process(int waveform, float inRate, float inDepth)
 
     float lfoPosition;
     
-    switch (static_cast<Waveform>(waveform))
+    switch (waveform)
     {
         case Sine:
             lfoPosition = sinf(mPhase * juce::MathConstants<double>::twoPi);
