@@ -33,7 +33,7 @@ public:
 
     void setSampleRate(double inSampleRate);
     
-    float process(int waveform, float inRate, float inDepth);
+    float process(Waveform waveform, float inRate, float inDepth);
 
 private:
 
