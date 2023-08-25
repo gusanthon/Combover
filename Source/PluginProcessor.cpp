@@ -215,7 +215,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     std::vector<float> saturationValues(currentNumCombs);
     std::vector<float> panValues(currentNumCombs);
     std::vector<float> levelValues(currentNumCombs);
-    std::vector<int> shapeChoiceValues(currentNumCombs);
+    std::vector<Waveform> shapeChoiceValues(currentNumCombs);
 
     float mDelayValue = apvts.getRawParameterValue("mDELAY")->load() / 100.f;
     float mFeedbackValue = apvts.getRawParameterValue("mFEEDBACK")->load()/ 100.f;
@@ -239,7 +239,7 @@ void ComboverAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         saturationValues[numComb] = apvts.getRawParameterValue("SATURATION_" + std::to_string(combIndex))->load() / 100.f;
         panValues[numComb] = (apvts.getRawParameterValue("PAN_" + std::to_string(combIndex))->load() / 100.f) * mWidthValue;
         levelValues[numComb] = (apvts.getRawParameterValue("MIX_" + std::to_string(combIndex))->load() / 100.f) * mMixValue;
-        shapeChoiceValues[numComb] = apvts.getRawParameterValue("SHAPE_" + std::to_string(combIndex))->load() + 1;
+        shapeChoiceValues[numComb] = static_cast<Waveform>(apvts.getRawParameterValue("SHAPE_" + std::to_string(combIndex))->load() + 1) ;
     }
 
     const float maxGain = 15 ; //db
