@@ -10,7 +10,7 @@
 
 #pragma once
 
-
+#include "CustomLNF.h"
 
 class LabeledComponent : public juce::Component
 {
@@ -192,6 +192,7 @@ private:
     CustomSlider slider;
     CustomLNF mLNF;
 };
+
 
 
 

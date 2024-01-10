@@ -17,8 +17,6 @@
               file="Source/mParamsComponent.h"/>
         <FILE id="auUiU1" name="ParameterPanel.h" compile="0" resource="0"
               file="Source/ParameterPanel.h"/>
-        <FILE id="NKJjoP" name="SliderWithLabel.h" compile="0" resource="0"
-              file="Source/SliderWithLabel.h"/>
         <FILE id="WIhguI" name="TopBarComponent.h" compile="0" resource="0"
               file="Source/TopBarComponent.h"/>
       </GROUP>
