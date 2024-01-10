@@ -24,12 +24,15 @@ public:
         : juce::TabbedComponent(juce::TabbedButtonBar::TabsAtTop),
           audioProcessor(audioProcessor)
     {
+        auto mParams = std::make_unique<mParamsComponent>(audioProcessor);
 
-        addTab("Master Params", backgroundColour, new mParamsComponent(audioProcessor), true);
-
+        addTab("Master Params", backgroundColour, mParams.release(), true);
+        
         for (int combIndex = 1; combIndex < numCombs + 1; ++combIndex)
         {
-            addTab("Comb " + std::to_string(combIndex), backgroundColour, new CombComponent(audioProcessor, combIndex), true);
+            auto combComponent = std::make_unique<CombComponent>(audioProcessor, combIndex);
+            addTab("Comb " + std::to_string(combIndex), backgroundColour, combComponent.release(), true);
+
         }
 
         audioProcessor.apvts.addParameterListener("nCOMBS", this);
@@ -64,7 +67,8 @@ private:
             for (int i = 1; i < nCombsToAdd + 1; ++i)
             {
                 int combNum = i + numCombs;
-                addTab("Comb " + std::to_string(combNum), backgroundColour, new CombComponent(audioProcessor, combNum), true);
+                auto newComb = std::make_unique<CombComponent>(audioProcessor, combNum);
+                addTab("Comb " + std::to_string(combNum), backgroundColour, newComb.release(), true);
             }
         }
         
