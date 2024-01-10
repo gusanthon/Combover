@@ -8,7 +8,6 @@
       <GROUP id="{EF024C80-7F31-F56A-99B1-A3A8F1AE67FB}" name="gui">
         <FILE id="AdgDe9" name="CombComponent.h" compile="0" resource="0" file="Source/CombComponent.h"/>
         <FILE id="DwmfWZ" name="CustomLNF.h" compile="0" resource="0" file="Source/CustomLNF.h"/>
-        <FILE id="u9OUnC" name="CustomSlider.h" compile="0" resource="0" file="Source/CustomSlider.h"/>
         <FILE id="g7APBh" name="CustomTabbedComponent.h" compile="0" resource="0"
               file="Source/CustomTabbedComponent.h"/>
         <FILE id="SWI0gU" name="LabeledComponent.h" compile="0" resource="0"
