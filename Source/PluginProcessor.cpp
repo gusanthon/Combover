@@ -63,7 +63,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout ComboverAudioProcessor::crea
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("FEEDBACK_") + std::to_string(combIndex), 1}, "FEEDBACK_" + std::to_string(combIndex), -100., 100., 50.f));
     
-        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("CUTOFF_") + std::to_string(combIndex), 1}, "CUTOFF_" + std::to_string(combIndex), 0,100, 0.f));
+        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("CUTOFF_") + std::to_string(combIndex), 1}, "CUTOFF_" + std::to_string(combIndex), 0,100, 0.01f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("DEPTH_") + std::to_string(combIndex), 1}, "DEPTH_" + std::to_string(combIndex), 0, 100, 100.f));
         
@@ -71,7 +71,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout ComboverAudioProcessor::crea
         rateRange.setSkewForCentre(1.f);
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("RATE_") + std::to_string(combIndex), 1}, "RATE_" + std::to_string(combIndex), rateRange, .5f));
         
-        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("PAN_") + std::to_string(combIndex), 1}, "PAN_" + std::to_string(combIndex), -100, 100, 0.f));
+        params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("PAN_") + std::to_string(combIndex), 1}, "PAN_" + std::to_string(combIndex), -100, 100, 0.01f));
         
         params.add(std::make_unique<AudioParameterFloat>(ParameterID{std::string("SATURATION_") + std::to_string(combIndex), 1}, "SATURATION_" + std::to_string(combIndex), 0,100, 0.f));
         
