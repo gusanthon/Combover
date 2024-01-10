@@ -11,7 +11,6 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "SliderWithLabel.h"
 #include "ParameterPanel.h"
 #include "LabeledComponent.h"
 
@@ -41,39 +40,37 @@ public:
         mRateAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "mRATE", mRateSlider.getSlider());
         nCombsAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(proc.apvts, "nCOMBS", nCombsSlider.getSlider());
         
+        
         mDelayPanel.setLabelText("mDELAY");
+        
         mDelaySlider.getSlider().setRange(.0f, 200.f, .1f);
-//        mDelaySlider.setSuffix("%");
-        mDelaySlider.getSlider().setTextValueSuffix("%");
+        mDelaySlider.getSlider().setTextValueSuffix(" %");
+        mDelaySlider.getSlider().setNumDecimals(1);
         
         mFeedbackSlider.getSlider().setRange(-100.f, 120.f, .1f);
-//        mFeedbackSlider.setSuffix("%");
         mFeedbackSlider.getSlider().setTextValueSuffix("%");
-        mFeedbackSlider.getSlider().setNumDecimalPlacesToDisplay(1);
+        mFeedbackSlider.getSlider().setNumDecimals(1);
         
         mCutoffSlider.getSlider().setRange(0.f, 100.f, .1f);
-//        mCutoffSlider.setSuffix("%");
-        mCutoffSlider.getSlider().setTextValueSuffix("%");;
+        mCutoffSlider.getSlider().setTextValueSuffix(" %");;
+        mCutoffSlider.getSlider().setNumDecimals(1);
         
         mLFOPanel.setLabelText("mLFO");
+        
         mDepthSlider.getSlider().setNumDecimalPlacesToDisplay(1);
         mDepthSlider.getSlider().setRange(0.f, 100.f, .1f);
-//        mDepthSlider.setSuffix("%");
-        mDepthSlider.getSlider().setTextValueSuffix("%");
+        mDepthSlider.getSlider().setTextValueSuffix(" %");
         
         mRateSlider.getSlider().setRange(0.f, 200.f, .1f);
-//        mRateSlider.setSuffix("%");
-        mRateSlider.getSlider().setTextValueSuffix("%");
+        mRateSlider.getSlider().setTextValueSuffix(" %");
         mRateSlider.getSlider().setNumDecimalPlacesToDisplay(1);
         
         mWidthSlider.getSlider().setRange(0.f, 200.f, .1f);
         mWidthSlider.getSlider().setNumDecimalPlacesToDisplay(1);
-//        mWidthSlider.setSuffix("%");
-        mWidthSlider.getSlider().setTextValueSuffix("%");
+        mWidthSlider.getSlider().setTextValueSuffix(" %");
         
         mMixSlider.getSlider().setRange(0.f, 100.f, .1f);
-//        mMixSlider.setSuffix("%");
-        mMixSlider.getSlider().setTextValueSuffix("%");
+        mMixSlider.getSlider().setTextValueSuffix(" %");
         
         mMixSlider.getSlider().setNumDecimalPlacesToDisplay(1);
         nCombsSlider.getSlider().setRange(2, 12, 1);
@@ -85,7 +82,6 @@ public:
         mLFOPanel.setBackgroundColor(juce::Colours::crimson);
         mOutPanel.setBackgroundColor(juce::Colours::darkgreen);
         
-//        addAndMakeVisible(&mDelaySlider);
         addAndMakeVisible(mDelayPanel);
         addAndMakeVisible(mLFOPanel);
         addAndMakeVisible(mOutPanel);
