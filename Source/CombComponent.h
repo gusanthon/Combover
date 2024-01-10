@@ -13,6 +13,8 @@
 #include "JuceHeader.h"
 #include "SliderWithLabel.h"
 #include "ParameterPanel.h"
+#include "LabeledComponent.h"
+
 
 class CombComponent : public juce::Component
 {
@@ -53,33 +55,41 @@ public:
         shapeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(proc.apvts, "SHAPE_" + std::to_string(combNum), ShapeComboBox.getComboBox());
 
         
-        DelayPanel.setTitleText("DELAY "+ std::to_string(combNum));
-        DelaySlider.setRange(.01f, 300.f, .01f);
-        DelaySlider.setSuffix("ms");
+        DelayPanel.setLabelText("DELAY "+ std::to_string(combNum));
+//        DelaySlider.setRange(.01f, 300.f, .01f);
+//        DelaySlider.setSuffix("ms");
+//        DelaySlider.setTextValueSuffix("ms");
         
-        FeedbackSlider.setRange(-100.f, 100.f, .1f);
-        FeedbackSlider.setSuffix("%");
-        FeedbackSlider.setNumDecimalPlacesToDisplay(1);
+        FeedbackSlider.getSlider().setRange(-100.f, 100.f, .1f);
+//        FeedbackSlider.setSuffix("%");
+        FeedbackSlider.getSlider().setTextValueSuffix("%");
+//        FeedbackSlider.setNumDecimalPlacesToDisplay(1);
         
-        CutoffSlider.setRange(0.f, 100.f, .1f);
-        CutoffSlider.setSuffix("%");
+        CutoffSlider.getSlider().setRange(0.f, 100.f, .1f);
+//        CutoffSlider.setSuffix("%");
+        CutoffSlider.getSlider().setTextValueSuffix("%");
         
-        LFOPanel.setTitleText("LFO "+ std::to_string(combNum));
-        DepthSlider.setNumDecimalPlacesToDisplay(1);
-        DepthSlider.setRange(0.f, 100.f, .1f);
-        DepthSlider.setSuffix("%");
+        LFOPanel.setLabelText("LFO "+ std::to_string(combNum));
+//        DepthSlider.setNumDecimalPlacesToDisplay(1);
+        DepthSlider.getSlider().setRange(0.f, 100.f, .1f);
+//        DepthSlider.setSuffix("%");
+        DepthSlider.getSlider().setTextValueSuffix("%");;
         
-        RateSlider.setRange(0.01f, 20.f, .1f);
-        RateSlider.setSuffix("Hz");
-        RateSlider.setNumDecimalPlacesToDisplay(1);
+//        RateSlider.setRange(0.01f, 20.f, .1f);
+//        RateSlider.setSuffix("Hz");
+        RateSlider.getSlider().setTextValueSuffix("Hz");
+//        RateSlider.setNumDecimalPlacesToDisplay(1);
               
-        PanSlider.setRange(-100.f, 100.f, .1f);
-        PanSlider.setNumDecimalPlacesToDisplay(1);
-        MixSlider.setRange(0.f, 100.f, .1f);
-        MixSlider.setNumDecimalPlacesToDisplay(1);
-        SaturationSlider.setRange(0, 100, .1);
-        SaturationSlider.setNumDecimalPlacesToDisplay(1);
-        OutPanel.setTitleText("OUT");
+        PanSlider.getSlider().setRange(-100.f, 100.f, .1f);
+//        PanSlider.setNumDecimalPlacesToDisplay(1);
+        MixSlider.getSlider().setRange(0.f, 100.f, .1f);
+//        MixSlider.setNumDecimalPlacesToDisplay(1);
+        
+        SaturationSlider.getSlider().setRange(0, 100, .1);
+//        SaturationSlider.setNumDecimalPlacesToDisplay(1);
+//        SaturationSlider.setSuffix("%");
+        SaturationSlider.getSlider().setTextValueSuffix("%");
+        OutPanel.setLabelText("OUT");
         
         DelayPanel.setBackgroundColor(juce::Colours::darkblue.brighter());
         LFOPanel.setBackgroundColor(juce::Colours::crimson);
@@ -88,6 +98,7 @@ public:
         addAndMakeVisible(DelayPanel);
         addAndMakeVisible(LFOPanel);
         addAndMakeVisible(OutPanel);
+//        addAndMakeVisible(ShapeComboBox);
     }
 
     
@@ -131,9 +142,11 @@ public:
     void randomizeShape()
     {
         float randomFloat = juce::Random::getSystemRandom().nextFloat();
+//        int range = ShapeComboBox.getNumItems();
         int range = ShapeComboBox.getComboBox().getNumItems();
         int randomChoice = randomFloat * range + 1;
         ShapeComboBox.getComboBox().setSelectedId(randomChoice);
+//        ShapeComboBox.setSelectedId(randomChoice);
     
     }
 
@@ -152,6 +165,8 @@ private:
     SliderWithLabel SaturationSlider;
     SliderWithLabel PanSlider;
     SliderWithLabel MixSlider;
+    
+//    SliderWithLabel slider1, slider2, slider3;
     
     ParameterPanel DelayPanel;
     ParameterPanel LFOPanel;
