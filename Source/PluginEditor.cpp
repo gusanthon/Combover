@@ -18,7 +18,7 @@ ComboverAudioProcessorEditor::ComboverAudioProcessorEditor (ComboverAudioProcess
     addAndMakeVisible(topBar);
     addAndMakeVisible(tabs);
     
-    topBar.toFront(false);
+//    topBar.toFront(false);
 
     setResizable(true, true);
 //    getConstrainer()->setFixedAspectRatio(2.0f);
@@ -84,19 +84,43 @@ bool ComboverAudioProcessorEditor::keyPressed(const KeyPress& press)
     int numTabs = tabs.getNumTabs();
     int current = tabs.getCurrentTabIndex();
 
-    if (press == juce::KeyPress::pageUpKey && current + 1 < numTabs)
+    if (press == juce::KeyPress::pageUpKey)// && current + 1 < numTabs)
     {
-        tabs.setCurrentTabIndex(current + 1);
+        if (current + 1 == numTabs)
+            tabs.setCurrentTabIndex(0);
+        else
+            tabs.setCurrentTabIndex(current + 1);
         return true;
             
     }
-    else if (press == juce::KeyPress::pageDownKey && current > 0)
+    else if (press == juce::KeyPress::pageDownKey)// && current > 0)
     {
-        tabs.setCurrentTabIndex(current - 1);
+        if (current == 0)
+            tabs.setCurrentTabIndex(numTabs - 1);
+        else
+            tabs.setCurrentTabIndex(current - 1);
         return true;
     }
     
-
+    
+    
+//    juce_wchar character = press.getTextCharacter();
+////    press.getTextCharacter()
+////    DBG(character);
+//    int int_char = (int) character - 48;
+//    DBG(int_char);
+    
+//    int character = (int) press.getTextCharacter() - 48;
+//    
+//    if ( character >= 0 && character <= 9 && character <= numTabs)
+//    {
+//        DBG("TRUE");
+//        tabs.setCurrentTabIndex(character);
+//        return true;
+//    }
+//        
+//    
+    
     switch (press.getTextCharacter())
     {
         case '0':
@@ -118,19 +142,19 @@ bool ComboverAudioProcessorEditor::keyPressed(const KeyPress& press)
                 tabs.setCurrentTabIndex(4);
                 return true;
             }
-            
+
         case '5':
             if (numTabs > 5){
                 tabs.setCurrentTabIndex(5);
                 return true;
             }
-            
+
         case '6':
             if (numTabs > 6) {
                 tabs.setCurrentTabIndex(6);
                 return true;
             }
-            
+
         case '7':
             if (numTabs > 7)
             {
