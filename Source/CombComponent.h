@@ -11,7 +11,6 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "SliderWithLabel.h"
 #include "ParameterPanel.h"
 #include "LabeledComponent.h"
 

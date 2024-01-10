@@ -85,15 +85,12 @@ public:
 
             float minVal = slider->getSlider().getMinimum();
             float maxVal = slider->getSlider().getMaximum();
-//            float minVal = slider->getMinimum();
-//            float maxVal = slider->getMaximum();
             float range = maxVal - minVal;
             
             float randomFloat = juce::Random::getSystemRandom().nextFloat();
             float randomVal = (range * randomFloat) + minVal;
             
             slider->getSlider().setValue(randomVal);
-//            slider->setValue(randomVal);
             
         }
         
@@ -110,15 +107,12 @@ public:
                 
                 float minVal = slider->getSlider().getMinimum();
                 float maxVal = slider->getSlider().getMaximum();
-//                float minVal = slider->getMinimum();
-//                float maxVal = slider->getMaximum();
                 float range = maxVal - minVal;
                 
                 float randomFloat = juce::Random::getSystemRandom().nextFloat();
                 float randomVal = (range * randomFloat) + minVal;
                 
                 slider->getSlider().setValue(randomVal);
-//                slider->setValue(randomVal);
 
             }
             combContent->randomizeShape();
