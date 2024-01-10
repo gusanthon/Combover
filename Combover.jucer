@@ -11,6 +11,8 @@
         <FILE id="u9OUnC" name="CustomSlider.h" compile="0" resource="0" file="Source/CustomSlider.h"/>
         <FILE id="g7APBh" name="CustomTabbedComponent.h" compile="0" resource="0"
               file="Source/CustomTabbedComponent.h"/>
+        <FILE id="SWI0gU" name="LabeledComponent.h" compile="0" resource="0"
+              file="Source/LabeledComponent.h"/>
         <FILE id="IbpevN" name="mParamsComponent.h" compile="0" resource="0"
               file="Source/mParamsComponent.h"/>
         <FILE id="auUiU1" name="ParameterPanel.h" compile="0" resource="0"
