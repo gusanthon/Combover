@@ -10,8 +10,6 @@
 
 #pragma once
 
-#include "CustomSlider.h"
-#include "SliderWithLabel.h"
 #include "LabeledComponent.h"
 
 
