@@ -11,15 +11,6 @@
 #include "LFO.h"
 #include "JuceHeader.h"
 
-LFO::LFO()
-{
-
-}
-
-LFO::~LFO()
-{
-
-}
 
 void LFO::reset()
 {

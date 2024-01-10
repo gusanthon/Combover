@@ -25,9 +25,7 @@ class LFO
 {
 public:
 
-    LFO();
-
-    ~LFO();
+    LFO() = default;
 
     void reset();
 
