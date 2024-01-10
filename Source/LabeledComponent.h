@@ -192,3 +192,52 @@ private:
     CustomSlider slider;
     CustomLNF mLNF;
 };
+
+
+
+class ComboBoxWithLabel : public juce::Component
+{
+public:
+    ComboBoxWithLabel(const juce::String& parameterLabel)
+    {
+        comboBox.setLookAndFeel(&mLNF);
+        addAndMakeVisible(comboBox);
+
+        label.setText(parameterLabel, juce::dontSendNotification);
+        label.setJustificationType(juce::Justification::centred);
+        label.setLookAndFeel(&mLNF);
+        addAndMakeVisible(label);
+//        comboBox.setSelectedId(1);
+    }
+
+    ~ComboBoxWithLabel()
+    {
+        comboBox.setLookAndFeel(nullptr);
+        label.setLookAndFeel(nullptr);
+    }
+
+
+    void resized() override
+    {
+        auto bounds = getLocalBounds();
+        label.setBounds(bounds.removeFromTop(labelHeight).reduced(0, 10));
+        comboBox.setBounds(bounds);
+    }
+
+    void addItem(const juce::String &newItemText, int newItemId)
+    {
+        comboBox.addItem(newItemText, newItemId);
+    }
+
+
+    juce::ComboBox& getComboBox()
+    {
+        return comboBox;
+    }
+
+private:
+    juce::ComboBox comboBox;
+    juce::Label label;
+    int labelHeight = 30;
+    CustomLNF mLNF;
+};
