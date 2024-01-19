@@ -59,41 +59,32 @@ public:
         DelaySlider->setTextValueSuffix(" ms");
         DelaySlider->setRange(.01f, 300.f, .01f);
         DelaySlider->setNumDecimals(2);
-//        DelaySlider.setSuffix("ms");
-//        DelaySlider.setTextValueSuffix("ms");
+
         
         FeedbackSlider.getSlider().setRange(-100.f, 100.f, .1f);
-//        FeedbackSlider.setSuffix("%");
         FeedbackSlider.getSlider().setTextValueSuffix("%");
         FeedbackSlider->setNumDecimals(1);
         
         CutoffSlider.getSlider().setRange(0.f, 100.f, .1f);
-//        CutoffSlider.setSuffix("%");
         CutoffSlider.getSlider().setTextValueSuffix("%");
         
         LFOPanel.setLabelText("LFO "+ std::to_string(combNum));
-//        DepthSlider.setNumDecimalPlacesToDisplay(1);
+        
         DepthSlider.getSlider().setRange(0.f, 100.f, .1f);
-//        DepthSlider.setSuffix("%");
         DepthSlider.getSlider().setTextValueSuffix("%");;
         DepthSlider->setNumDecimals(1);
         
-//        RateSlider.setRange(0.01f, 20.f, .1f);
-//        RateSlider.setSuffix("Hz");
         RateSlider.getSlider().setTextValueSuffix("Hz");
         RateSlider->setNumDecimals(2);
-//        RateSlider.setNumDecimalPlacesToDisplay(1);
               
         PanSlider.getSlider().setRange(-100.f, 100.f, .1f);
-//        PanSlider.setNumDecimalPlacesToDisplay(1);
+
         MixSlider.getSlider().setRange(0.f, 100.f, .1f);
         MixSlider->setTextValueSuffix("%");
         MixSlider->setNumDecimals(1);
-//        MixSlider.setNumDecimalPlacesToDisplay(1);
         
         SaturationSlider.getSlider().setRange(0, 100, .1);
-//        SaturationSlider.setNumDecimalPlacesToDisplay(1);
-//        SaturationSlider.setSuffix("%");
+        SaturationSlider->setNumDecimals(1);
         SaturationSlider.getSlider().setTextValueSuffix("%");
         OutPanel.setLabelText("OUT");
         
@@ -104,7 +95,7 @@ public:
         addAndMakeVisible(DelayPanel);
         addAndMakeVisible(LFOPanel);
         addAndMakeVisible(OutPanel);
-//        addAndMakeVisible(ShapeComboBox);
+
     }
 
     
@@ -148,11 +139,10 @@ public:
     void randomizeShape()
     {
         float randomFloat = juce::Random::getSystemRandom().nextFloat();
-//        int range = ShapeComboBox.getNumItems();
+
         int range = ShapeComboBox.getComboBox().getNumItems();
         int randomChoice = randomFloat * range + 1;
         ShapeComboBox.getComboBox().setSelectedId(randomChoice);
-//        ShapeComboBox.setSelectedId(randomChoice);
     
     }
 
