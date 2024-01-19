@@ -24,10 +24,10 @@ public:
         CutoffSlider("DAMPING " + std::to_string(combNum)),
         RateSlider("RATE " + std::to_string(combNum)),
         DepthSlider("DEPTH " + std::to_string(combNum)),
+        ShapeComboBox("SHAPE "+ std::to_string(combNum)),
+        SaturationSlider("SATURATION " + std::to_string(combNum)),
         PanSlider("PAN " + std::to_string(combNum)),
         MixSlider("LEVEL " + std::to_string(combNum)),
-        SaturationSlider("SATURATION " + std::to_string(combNum)),
-        ShapeComboBox("SHAPE "+ std::to_string(combNum)),
         DelayPanel(juce::Array<juce::Component*>{&DelaySlider, &FeedbackSlider, &CutoffSlider}, true),
         LFOPanel(juce::Array<juce::Component*>{&RateSlider, &DepthSlider, &ShapeComboBox}, true),
         OutPanel(juce::Array<juce::Component*>{&SaturationSlider, &PanSlider, &MixSlider}, true)
